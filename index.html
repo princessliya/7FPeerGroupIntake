@@ -6,33 +6,28 @@
 <title>Help Shape Your Peer Group Experience — 7 Figure MSP</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #f5f4f1;
-    --surface: #ffffff;
-    --border: #e0ddd6;
-    --border-strong: #c8c4bc;
-    --text-primary: #1a1916;
-    --text-secondary: #5c5a55;
-    --text-muted: #9a9790;
-    --accent: #1e5fd4;
-    --accent-bg: #eef3fd;
-    --accent-border: #b3c9f5;
-    --accent-text: #1040a0;
-    --danger: #c0392b;
-    --danger-bg: #fdf0ee;
-    --success: #1a7a4a;
-    --success-bg: #edfaf3;
-    --radius: 8px;
-    --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --orange:        #E3511C;
+    --orange-dark:   #CA3508;
+    --red:           #B6181C;
+    --black:         #000000;
+    --warm-white:    #FDFBF9;
+    --gray:          #E7E1DC;
+    --gray-mid:      #C4BAB3;
+    --text-primary:  #000000;
+    --text-secondary:#4A4540;
+    --text-muted:    #8A8078;
+    --radius:        8px;
+    --font:          'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   body {
     font-family: var(--font);
-    background: var(--bg);
+    background: var(--warm-white);
     color: var(--text-primary);
     min-height: 100vh;
     padding: 2rem 1rem 4rem;
@@ -41,57 +36,86 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* ── Header ── */
   .page-header {
     max-width: 640px;
     margin: 0 auto 2rem;
   }
 
-  .page-header .brand {
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.25rem;
+  }
+
+  .brand-bar {
+    width: 3px;
+    height: 20px;
+    background: var(--orange);
+    border-radius: 2px;
+  }
+
+  .brand-name {
     font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.75rem;
+    color: var(--orange);
   }
 
   .page-header h1 {
     font-size: 26px;
-    font-weight: 600;
-    line-height: 1.25;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--black);
+    margin-bottom: 0.75rem;
   }
 
   .page-header p {
     font-size: 14px;
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.65;
+    margin-bottom: 0.5rem;
   }
 
+  .privacy-note {
+    font-size: 13px;
+    color: var(--text-muted);
+    background: var(--gray);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    line-height: 1.5;
+    margin-top: 0.75rem;
+  }
+
+  /* ── Card ── */
   .card {
     max-width: 640px;
     margin: 0 auto;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: #fff;
+    border: 1px solid var(--gray);
     border-radius: 12px;
     padding: 2rem;
   }
 
-  /* Progress */
+  /* ── Progress ── */
   .progress-wrap { margin-bottom: 2rem; }
+
   .progress-track {
-    height: 3px;
-    background: var(--border);
+    height: 4px;
+    background: var(--gray);
     border-radius: 2px;
     overflow: hidden;
   }
+
   .progress-fill {
     height: 100%;
-    background: var(--accent);
+    background: var(--orange);
     border-radius: 2px;
     transition: width 0.4s ease;
   }
+
   .progress-meta {
     display: flex;
     justify-content: space-between;
@@ -100,13 +124,14 @@
     color: var(--text-muted);
   }
 
-  /* Sections */
+  /* ── Sections ── */
   .section { display: none; }
   .section.active { display: block; }
 
   .section-heading {
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
+    color: var(--black);
     margin-bottom: 0.25rem;
   }
 
@@ -115,27 +140,36 @@
     color: var(--text-secondary);
     margin-bottom: 1.75rem;
     line-height: 1.5;
+    font-style: italic;
   }
 
-  /* Fields */
+  /* ── Fields ── */
   .field { margin-bottom: 1.5rem; }
 
   .field label {
     display: block;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 6px;
+    line-height: 1.4;
   }
 
   .field .hint {
     font-size: 12px;
     color: var(--text-muted);
     margin-bottom: 8px;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
-  .req { color: var(--danger); margin-left: 2px; }
+  .req { color: var(--red); margin-left: 2px; }
+
+  .opt-tag {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-left: 6px;
+  }
 
   .max-note {
     font-size: 11px;
@@ -144,15 +178,16 @@
     font-weight: 400;
   }
 
-  /* Inputs */
+  /* ── Inputs ── */
   input[type="text"],
   input[type="email"],
-  textarea {
+  textarea,
+  select {
     width: 100%;
     padding: 9px 12px;
     font-size: 14px;
     font-family: var(--font);
-    border: 1px solid var(--border-strong);
+    border: 1px solid var(--gray-mid);
     border-radius: var(--radius);
     background: #fff;
     color: var(--text-primary);
@@ -162,10 +197,11 @@
 
   input[type="text"]:focus,
   input[type="email"]:focus,
-  textarea:focus {
+  textarea:focus,
+  select:focus {
     outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(30, 95, 212, 0.1);
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(227, 81, 28, 0.12);
   }
 
   textarea {
@@ -174,7 +210,15 @@
     line-height: 1.5;
   }
 
-  /* Pills */
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238A8078' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  /* ── Pills ── */
   .pills {
     display: flex;
     flex-wrap: wrap;
@@ -186,7 +230,7 @@
     font-size: 13px;
     font-family: var(--font);
     border-radius: 20px;
-    border: 1px solid var(--border-strong);
+    border: 1px solid var(--gray-mid);
     background: #fff;
     color: var(--text-secondary);
     cursor: pointer;
@@ -195,15 +239,15 @@
   }
 
   .pill:hover {
-    border-color: var(--accent);
+    border-color: var(--orange);
     color: var(--text-primary);
   }
 
   .pill.selected {
-    background: var(--accent-bg);
-    border-color: var(--accent-border);
-    color: var(--accent-text);
-    font-weight: 500;
+    background: #FDF1EC;
+    border-color: var(--orange);
+    color: var(--orange-dark);
+    font-weight: 600;
   }
 
   .other-input {
@@ -211,7 +255,7 @@
     margin-top: 8px;
   }
 
-  /* Availability grid */
+  /* ── Availability grid ── */
   .avail-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -223,7 +267,7 @@
     font-size: 13px;
     font-family: var(--font);
     border-radius: var(--radius);
-    border: 1px solid var(--border-strong);
+    border: 1px solid var(--gray-mid);
     background: #fff;
     color: var(--text-secondary);
     cursor: pointer;
@@ -232,33 +276,20 @@
   }
 
   .avail-pill:hover {
-    border-color: var(--accent);
+    border-color: var(--orange);
     color: var(--text-primary);
   }
 
   .avail-pill.selected {
-    background: var(--accent-bg);
-    border-color: var(--accent-border);
-    color: var(--accent-text);
-    font-weight: 500;
+    background: #FDF1EC;
+    border-color: var(--orange);
+    color: var(--orange-dark);
+    font-weight: 600;
   }
 
   .avail-pill.full-width { grid-column: span 2; }
 
-  .tz-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-  }
-
-  .tz-label {
-    font-size: 13px;
-    color: var(--text-secondary);
-    white-space: nowrap;
-  }
-
-  /* Two-col layout */
+  /* ── Two-col ── */
   .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -269,38 +300,40 @@
     .two-col { grid-template-columns: 1fr; }
     .avail-grid { grid-template-columns: 1fr; }
     .avail-pill.full-width { grid-column: span 1; }
+    .card { padding: 1.25rem; }
   }
 
-  /* Errors */
+  /* ── Errors ── */
   .error {
     font-size: 12px;
-    color: var(--danger);
+    color: var(--red);
     margin-top: 5px;
     display: none;
   }
 
   .field.has-error input,
-  .field.has-error textarea {
-    border-color: var(--danger);
+  .field.has-error textarea,
+  .field.has-error select {
+    border-color: var(--red);
   }
 
   .field.has-error .error { display: block; }
 
-  /* Nav */
+  /* ── Nav ── */
   .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 2rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--gray);
   }
 
   .btn {
-    padding: 9px 22px;
+    padding: 10px 24px;
     font-size: 14px;
     font-family: var(--font);
-    font-weight: 500;
+    font-weight: 600;
     border-radius: var(--radius);
     cursor: pointer;
     transition: all 0.15s;
@@ -309,7 +342,7 @@
 
   .btn-back {
     background: transparent;
-    border: 1px solid var(--border-strong);
+    border: 1px solid var(--gray-mid);
     color: var(--text-secondary);
   }
 
@@ -319,24 +352,24 @@
   }
 
   .btn-next {
-    background: var(--accent);
+    background: var(--orange-dark);
     color: #fff;
   }
 
-  .btn-next:hover { background: #1a52bb; }
+  .btn-next:hover { background: #b02e06; }
   .btn-next:active { transform: scale(0.98); }
 
-  /* Confirmation */
+  /* ── Confirmation ── */
   .confirm {
     text-align: center;
     padding: 2.5rem 0 1rem;
   }
 
   .confirm-icon {
-    width: 52px;
-    height: 52px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    background: var(--success-bg);
+    background: #FDF1EC;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -344,16 +377,17 @@
   }
 
   .confirm-icon svg {
-    width: 24px;
-    height: 24px;
-    stroke: var(--success);
+    width: 26px;
+    height: 26px;
+    stroke: var(--orange);
     stroke-width: 2.5;
     fill: none;
   }
 
   .confirm h2 {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
+    color: var(--black);
     margin-bottom: 0.75rem;
   }
 
@@ -365,27 +399,9 @@
     margin: 0 auto;
   }
 
-  /* Thank you data summary */
-  .summary {
-    margin-top: 2rem;
-    background: var(--bg);
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    text-align: left;
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.8;
-    display: none;
-  }
-
-  .summary strong {
-    color: var(--text-primary);
-    font-weight: 500;
-  }
-
   .divider {
     border: none;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--gray);
     margin: 1.5rem 0;
   }
 </style>
@@ -393,9 +409,15 @@
 <body>
 
 <div class="page-header">
-  <div class="brand">7 Figure MSP</div>
+  <div class="brand">
+    <div class="brand-bar"></div>
+    <span class="brand-name">7 Figure MSP</span>
+  </div>
   <h1>Help shape your peer group experience</h1>
-  <p>We're exploring smaller, more focused peer groups to help members make progress through accountability, shared experience, and practical support. This form takes about 5–7 minutes.</p>
+  <p>We're designing smaller, more focused peer groups to help members make meaningful progress through accountability, shared experience, and practical support.</p>
+  <p>Your input will directly help us determine how the groups are structured, what they focus on, and which members may benefit most from working together. Please answer based on what would genuinely help you make progress over the next 90 days.</p>
+  <p>This form takes about <strong>5 minutes</strong>.</p>
+  <div class="privacy-note">🔒 Your responses, including MRR information, will be used only to understand member needs and help design and match the groups. Individual financial information will not be shared with other members.</div>
 </div>
 
 <div class="card">
@@ -412,7 +434,7 @@
   <!-- ─── Section 1: About You ─── -->
   <div class="section active" id="s1">
     <div class="section-heading">About you</div>
-    <div class="section-sub">A few basics to help us match you with the right group.</div>
+    <div class="section-sub">A few basics to help us understand where you are and match you with the right group.</div>
 
     <div class="field" id="f-name">
       <label>Full name <span class="req">*</span></label>
@@ -433,9 +455,10 @@
     </div>
 
     <div class="field" id="f-market">
-      <label>City, state, and primary market <span class="req">*</span></label>
+      <label>Primary market or service area <span class="req">*</span></label>
+      <div class="hint">Example: Austin, TX</div>
       <input type="text" id="market" placeholder="e.g. Austin, TX" />
-      <div class="error">Please enter your city, state, and primary market.</div>
+      <div class="error">Please enter your primary market.</div>
     </div>
 
     <div class="two-col">
@@ -446,7 +469,7 @@
         <div class="error">Required.</div>
       </div>
       <div class="field" id="f-mrr-now">
-        <label>MRR today <span class="req">*</span></label>
+        <label>Current MRR <span class="req">*</span></label>
         <div class="hint">A best estimate is fine.</div>
         <input type="text" id="mrr-now" placeholder="e.g. $28,000" />
         <div class="error">Required.</div>
@@ -459,10 +482,10 @@
     </div>
   </div>
 
-  <!-- ─── Section 2: Peer Group Goals ─── -->
+  <!-- ─── Section 2: Your Next 90 Days ─── -->
   <div class="section" id="s2">
-    <div class="section-heading">What you want from a peer group</div>
-    <div class="section-sub">Help us understand your goals and what would make this genuinely valuable.</div>
+    <div class="section-heading">Your next 90 days</div>
+    <div class="section-sub">Tell us where you want to make progress and what kind of support would help most.</div>
 
     <div class="field" id="f-goals">
       <label>What would you most want a peer group to help you accomplish over the next 90 days? <span class="req">*</span></label>
@@ -479,11 +502,10 @@
       <div class="error">Please select at least one.</div>
     </div>
 
-    <div class="field" id="f-result">
-      <label>What specific result would make the next 90 days feel successful? <span class="req">*</span></label>
-      <div class="hint">e.g. Schedule 10 qualified appointments, close three new clients, complete SBRs with 80% of clients, or launch one consistent campaign.</div>
-      <textarea id="result" placeholder="Describe your 90-day target..."></textarea>
-      <div class="error">Please describe your target result.</div>
+    <div class="field" id="f-worth">
+      <label>Imagine the group has been running for 90 days. What specific result would make you say, "This was worth my time"? <span class="opt-tag">(optional)</span></label>
+      <div class="hint">Examples: schedule 10 qualified appointments, close three new clients, complete SBRs with 80% of clients, launch one consistent campaign, or establish better team accountability.</div>
+      <textarea id="worth" placeholder="Describe what success looks like..."></textarea>
     </div>
 
     <div class="field" id="f-wants">
@@ -501,37 +523,23 @@
       <div class="error">Please select at least one.</div>
     </div>
 
-    <div class="field" id="f-style">
-      <label>Which meeting style would be most valuable to you? <span class="req">*</span></label>
-      <div class="pills" id="style" data-max="1">
+    <div class="field">
+      <label>Thinking about the 7 Figure MSP calls you currently attend, what has been most valuable to you, and why? <span class="opt-tag">(optional)</span></label>
+      <div class="hint">You may mention a specific call if one stands out. We're most interested in what makes it valuable — for example, accountability, practical implementation, expert feedback, peer examples, troubleshooting, or help deciding what to do next.</div>
+      <textarea id="valuable" placeholder="Share what's been most useful..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Which meeting styles would be most valuable to you? <span class="opt-tag">(optional)</span></label>
+      <div class="max-note">Select up to 2</div>
+      <div class="pills" id="style" data-max="2">
         <button class="pill" data-val="Structured accountability and progress check-ins">Structured accountability and progress check-ins</button>
         <button class="pill" data-val="Member hot seats focused on current challenges">Member hot seats focused on current challenges</button>
         <button class="pill" data-val="Deal, campaign, or client reviews">Deal, campaign, or client reviews</button>
         <button class="pill" data-val="Expert teaching and Q&A">Expert teaching and Q&amp;A</button>
-        <button class="pill" data-val="A mix of all of the above">A mix of all of the above</button>
         <button class="pill other-pill" data-val="other-style">Other</button>
       </div>
       <input type="text" class="other-input" id="style-other" placeholder="Tell us more..." />
-      <div class="error">Please select one.</div>
-    </div>
-
-    <div class="field" id="f-groupwith">
-      <label>What type of members would you benefit most from being grouped with? <span class="req">*</span></label>
-      <div class="max-note">Select up to 2</div>
-      <div class="pills" id="groupwith" data-max="2">
-        <button class="pill" data-val="Members at a similar revenue or growth stage">Members at a similar revenue or growth stage</button>
-        <button class="pill" data-val="Businesses slightly ahead of mine">Businesses slightly ahead of mine</button>
-        <button class="pill" data-val="Members working toward a similar goal">Members working toward a similar goal</button>
-        <button class="pill" data-val="Members with different strengths who can challenge my thinking">Members with different strengths who can challenge my thinking</button>
-        <button class="pill" data-val="I'm open to the team's recommendation">I'm open to the team's recommendation</button>
-      </div>
-      <div class="error">Please select at least one.</div>
-    </div>
-
-    <div class="field" id="f-worth">
-      <label>Imagine the group has been running for 90 days. What would need to have happened for you to say, "This was worth my time"? <span class="req">*</span></label>
-      <textarea id="worth" placeholder="Describe what success looks like..."></textarea>
-      <div class="error">Please share what success looks like for you.</div>
     </div>
 
     <div class="nav">
@@ -540,17 +548,29 @@
     </div>
   </div>
 
-  <!-- ─── Section 3: Participation ─── -->
+  <!-- ─── Section 3: Group Fit & Availability ─── -->
   <div class="section" id="s3">
-    <div class="section-heading">Participation and logistics</div>
-    <div class="section-sub">Help us match you with a group that fits your schedule.</div>
+    <div class="section-heading">Group fit and availability</div>
+    <div class="section-sub">Help us understand who you would learn best with and how you could realistically participate.</div>
+
+    <div class="field">
+      <label>What type of members would you benefit most from being grouped with? <span class="opt-tag">(optional)</span></label>
+      <div class="max-note">Select up to 2</div>
+      <div class="pills" id="groupwith" data-max="2">
+        <button class="pill" data-val="Members at a similar revenue or growth stage">Members at a similar revenue or growth stage</button>
+        <button class="pill" data-val="Businesses slightly ahead of mine">Businesses slightly ahead of mine</button>
+        <button class="pill" data-val="Members working toward a similar goal">Members working toward a similar goal</button>
+        <button class="pill" data-val="Members with different strengths who can challenge my thinking">Members with different strengths who can challenge my thinking</button>
+        <button class="pill" data-val="I'm open to the team's recommendation">I'm open to the team's recommendation</button>
+      </div>
+    </div>
 
     <div class="field" id="f-who">
       <label>Who from your company should primarily participate? <span class="req">*</span></label>
       <div class="pills" id="who" data-max="1">
         <button class="pill" data-val="Me, as the owner or primary leader">Me, as the owner or primary leader</button>
         <button class="pill" data-val="Me, together with a team member">Me, together with a team member</button>
-        <button class="pill" data-val="A specific team member (sales, marketing, or operations)">A specific team member (sales, marketing, or operations)</button>
+        <button class="pill" data-val="A specific team member in sales, marketing, or operations">A specific team member in sales, marketing, or operations</button>
         <button class="pill" data-val="It depends on the group's focus">It depends on the group's focus</button>
       </div>
       <div class="error">Please select one.</div>
@@ -574,11 +594,21 @@
         <button class="avail-pill" data-val="Weekday evenings">Weekday evenings</button>
         <button class="avail-pill full-width" data-val="I'm flexible">I'm flexible</button>
       </div>
-      <div class="tz-row">
-        <span class="tz-label">Time zone:</span>
-        <input type="text" id="timezone" placeholder="e.g. Eastern, CST, PST" style="max-width: 220px;" />
-      </div>
-      <div class="error">Please select at least one time slot.</div>
+      <div class="error">Please select at least one.</div>
+    </div>
+
+    <div class="field" id="f-tz">
+      <label>What time zone should we use when scheduling? <span class="req">*</span></label>
+      <select id="timezone">
+        <option value="">Select your time zone...</option>
+        <option value="Eastern Time">Eastern Time</option>
+        <option value="Central Time">Central Time</option>
+        <option value="Mountain Time">Mountain Time</option>
+        <option value="Pacific Time">Pacific Time</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" class="other-input" id="tz-other" placeholder="Please specify your time zone..." />
+      <div class="error">Please select your time zone.</div>
     </div>
 
     <div class="nav">
@@ -593,28 +623,26 @@
       <div class="confirm-icon">
         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
       </div>
-      <h2>Thank you for sharing your feedback.</h2>
-      <p>We'll use your responses, along with what we already know about your business, to shape the peer groups and recommend the support approach that best fits your goals. We'll follow up soon with next steps.</p>
+      <h2>Thank you for sharing your input.</h2>
+      <p>Your responses will help us design peer groups around the goals, challenges, and types of support members actually need. We'll review responses to identify common priorities, preferred formats, scheduling needs, and potential group matches. We'll follow up soon with next steps.</p>
     </div>
-    <div class="summary" id="summary"></div>
   </div>
 </div>
 
 <script>
-  var currentSection = 1;
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw0sATOtlNijUcUGYQ_og2i37idEdQFKtF6G0MqTCGdzF3Xzmw_bZQMs0NEWy7OvuM1lg/exec';
 
   var sectionMeta = [
     null,
     { label: 'Section 1 of 3 — About you', pct: 33 },
-    { label: 'Section 2 of 3 — Goals and preferences', pct: 66 },
-    { label: 'Section 3 of 3 — Participation and logistics', pct: 100 },
+    { label: 'Section 2 of 3 — Your next 90 days', pct: 66 },
+    { label: 'Section 3 of 3 — Group fit and availability', pct: 100 },
     { label: 'Complete', pct: 100 },
   ];
 
   function showSection(n) {
     document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
     document.getElementById('s' + n).classList.add('active');
-    currentSection = n;
     var meta = sectionMeta[n] || sectionMeta[4];
     document.getElementById('prog').style.width = meta.pct + '%';
     document.getElementById('prog-label').textContent = meta.label;
@@ -638,16 +666,13 @@
     }
     if (n === 2) {
       ok = chkPills('goals', 'f-goals') & ok;
-      ok = chkTA('result', 'f-result') & ok;
       ok = chkPills('wants', 'f-wants') & ok;
-      ok = chkPills('style', 'f-style') & ok;
-      ok = chkPills('groupwith', 'f-groupwith') & ok;
-      ok = chkTA('worth', 'f-worth') & ok;
     }
     if (n === 3) {
       ok = chkPills('who', 'f-who') & ok;
       ok = chkPills('freq', 'f-freq') & ok;
       ok = chkAvail('f-avail') & ok;
+      ok = chkSelect('timezone', 'f-tz') & ok;
     }
     return !!ok;
   }
@@ -667,13 +692,6 @@
     f.classList.remove('has-error'); return true;
   }
 
-  function chkTA(id, fid) {
-    var v = document.getElementById(id).value.trim();
-    var f = document.getElementById(fid);
-    if (!v) { f.classList.add('has-error'); return false; }
-    f.classList.remove('has-error'); return true;
-  }
-
   function chkPills(groupId, fid) {
     var sel = document.querySelectorAll('#' + groupId + ' .pill.selected');
     var f = document.getElementById(fid);
@@ -685,6 +703,13 @@
     var sel = document.querySelectorAll('#avail .avail-pill.selected');
     var f = document.getElementById(fid);
     if (!sel.length) { f.classList.add('has-error'); return false; }
+    f.classList.remove('has-error'); return true;
+  }
+
+  function chkSelect(id, fid) {
+    var v = document.getElementById(id).value;
+    var f = document.getElementById(fid);
+    if (!v) { f.classList.add('has-error'); return false; }
     f.classList.remove('has-error'); return true;
   }
 
@@ -700,13 +725,11 @@
           if (first) first.classList.remove('selected');
         }
         pill.classList.toggle('selected');
-        // show/hide other input
         if (pill.classList.contains('other-pill')) {
           var otherId = group.id + '-other';
           var otherEl = document.getElementById(otherId);
           if (otherEl) otherEl.style.display = pill.classList.contains('selected') ? 'block' : 'none';
         }
-        // clear error
         var fid = 'f-' + group.id;
         var field = document.getElementById(fid);
         if (field) field.classList.remove('has-error');
@@ -721,7 +744,14 @@
     });
   });
 
-  /* ── Collect responses ── */
+  // Timezone "Other" toggle
+  document.getElementById('timezone').addEventListener('change', function() {
+    var otherEl = document.getElementById('tz-other');
+    otherEl.style.display = this.value === 'Other' ? 'block' : 'none';
+    document.getElementById('f-tz').classList.remove('has-error');
+  });
+
+  /* ── Helpers ── */
   function getVal(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
 
   function getPills(groupId) {
@@ -733,84 +763,57 @@
         var otherEl = document.getElementById(otherId);
         var txt = otherEl ? otherEl.value.trim() : '';
         vals.push(txt ? 'Other: ' + txt : 'Other');
-      } else if (v) {
-        vals.push(v);
-      }
+      } else if (v) { vals.push(v); }
     });
-    return vals.join(', ') || '—';
+    return vals.join(', ') || '';
   }
 
   function getAvail() {
     var vals = [];
     document.querySelectorAll('#avail .avail-pill.selected').forEach(function(p) { vals.push(p.dataset.val); });
-    return vals.join(', ') || '—';
+    return vals.join(', ') || '';
+  }
+
+  function getTZ() {
+    var v = getVal('timezone');
+    if (v === 'Other') {
+      var other = getVal('tz-other');
+      return other ? 'Other: ' + other : 'Other';
+    }
+    return v;
   }
 
   /* ── Submit ── */
-
-  // ✏️  Paste your Apps Script web app URL here after deploying
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw0sATOtlNijUcUGYQ_og2i37idEdQFKtF6G0MqTCGdzF3Xzmw_bZQMs0NEWy7OvuM1lg/exec';
-
   function submitForm() {
     if (!validateSection(3)) return;
 
-    var rows = [
-      ['Name',              getVal('name')],
-      ['Email',             getVal('email')],
-      ['Company',           getVal('company')],
-      ['Market',            getVal('market')],
-      ['MRR at Join',       getVal('mrr-start')],
-      ['MRR Today',         getVal('mrr-now')],
-      ['90-Day Goals',      getPills('goals')],
-      ['Target Result',     getVal('result')],
-      ['Wants From Group',  getPills('wants')],
-      ['Meeting Style',     getPills('style')],
-      ['Group With',        getPills('groupwith')],
-      ['Worth It If',       getVal('worth')],
-      ['Who Participates',  getPills('who')],
-      ['Frequency',         getPills('freq')],
-      ['Availability',      getAvail()],
-      ['Time Zone',         getVal('timezone') || ''],
-    ];
-
-    // Build payload object
-    var payload = {};
-    rows.forEach(function(row) { payload[row[0]] = row[1]; });
-
-    // Show confirmation immediately (no-cors means we can't read the response)
-    var html = '<strong style="display:block; margin-bottom: 0.5rem;">Your responses</strong>';
-    rows.forEach(function(row) {
-      if (row[1] && row[1] !== '—') {
-        html += '<div><strong>' + row[0] + ':</strong> ' + escHtml(row[1]) + '</div>';
-      }
-    });
-    var summaryEl = document.getElementById('summary');
-    summaryEl.innerHTML = html;
-    summaryEl.style.display = 'block';
+    var payload = {
+      'Name':           getVal('name'),
+      'Email':          getVal('email'),
+      'Company':        getVal('company'),
+      'Market':         getVal('market'),
+      'MRR at Join':    getVal('mrr-start'),
+      'MRR Today':      getVal('mrr-now'),
+      '90-Day Goals':   getPills('goals'),
+      'Worth It If':    getVal('worth'),
+      'Wants From Group': getPills('wants'),
+      'Most Valuable':  getVal('valuable'),
+      'Meeting Style':  getPills('style'),
+      'Group With':     getPills('groupwith'),
+      'Who Participates': getPills('who'),
+      'Frequency':      getPills('freq'),
+      'Availability':   getAvail(),
+      'Time Zone':      getTZ(),
+    };
 
     showSection(4);
 
-    // Send to Google Apps Script
-    if (SCRIPT_URL && SCRIPT_URL !== 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE') {
-      fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors', // required for Apps Script web apps
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      }).catch(function(err) {
-        console.warn('Submission error:', err);
-      });
-    } else {
-      console.log('⚠️  No SCRIPT_URL set. Payload:', JSON.stringify(payload, null, 2));
-    }
-  }
-
-  function escHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(function(err) { console.warn('Submission error:', err); });
   }
 </script>
 </body>
