@@ -25,6 +25,8 @@
     --font:          'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
     font-family: var(--font);
     background: var(--warm-white);
@@ -36,7 +38,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── Header ── */
   .page-header {
     max-width: 640px;
     margin: 0 auto 2rem;
@@ -89,7 +90,6 @@
     margin-top: 0.75rem;
   }
 
-  /* ── Card ── */
   .card {
     max-width: 640px;
     margin: 0 auto;
@@ -99,7 +99,6 @@
     padding: 2rem;
   }
 
-  /* ── Progress ── */
   .progress-wrap { margin-bottom: 2rem; }
 
   .progress-track {
@@ -124,7 +123,6 @@
     color: var(--text-muted);
   }
 
-  /* ── Sections ── */
   .section { display: none; }
   .section.active { display: block; }
 
@@ -143,7 +141,6 @@
     font-style: italic;
   }
 
-  /* ── Fields ── */
   .field { margin-bottom: 1.5rem; }
 
   .field label {
@@ -162,6 +159,14 @@
     line-height: 1.5;
   }
 
+  .field .sublabel {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
   .req { color: var(--red); margin-left: 2px; }
 
   .opt-tag {
@@ -178,7 +183,6 @@
     font-weight: 400;
   }
 
-  /* ── Inputs ── */
   input[type="text"],
   input[type="email"],
   textarea,
@@ -218,7 +222,6 @@
     cursor: pointer;
   }
 
-  /* ── Pills ── */
   .pills {
     display: flex;
     flex-wrap: wrap;
@@ -250,12 +253,44 @@
     font-weight: 600;
   }
 
+  /* Radio-style pills for single select */
+  .radio-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .radio-pill {
+    padding: 11px 16px;
+    font-size: 13px;
+    font-family: var(--font);
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-mid);
+    background: #fff;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    line-height: 1.4;
+  }
+
+  .radio-pill:hover {
+    border-color: var(--orange);
+    color: var(--text-primary);
+  }
+
+  .radio-pill.selected {
+    background: #FDF1EC;
+    border-color: var(--orange);
+    color: var(--orange-dark);
+    font-weight: 600;
+  }
+
   .other-input {
     display: none;
     margin-top: 8px;
   }
 
-  /* ── Availability grid ── */
   .avail-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -289,7 +324,6 @@
 
   .avail-pill.full-width { grid-column: span 2; }
 
-  /* ── Two-col ── */
   .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -303,7 +337,6 @@
     .card { padding: 1.25rem; }
   }
 
-  /* ── Errors ── */
   .error {
     font-size: 12px;
     color: var(--red);
@@ -319,7 +352,6 @@
 
   .field.has-error .error { display: block; }
 
-  /* ── Nav ── */
   .nav {
     display: flex;
     justify-content: space-between;
@@ -359,7 +391,6 @@
   .btn-next:hover { background: #b02e06; }
   .btn-next:active { transform: scale(0.98); }
 
-  /* ── Confirmation ── */
   .confirm {
     text-align: center;
     padding: 2.5rem 0 1rem;
@@ -395,14 +426,8 @@
     font-size: 14px;
     color: var(--text-secondary);
     line-height: 1.65;
-    max-width: 420px;
-    margin: 0 auto;
-  }
-
-  .divider {
-    border: none;
-    border-top: 1px solid var(--gray);
-    margin: 1.5rem 0;
+    max-width: 460px;
+    margin: 0 auto 0.75rem;
   }
 </style>
 </head>
@@ -414,9 +439,10 @@
     <span class="brand-name">7 Figure MSP</span>
   </div>
   <h1>Help shape your peer group experience</h1>
-  <p>We're designing smaller, more focused peer groups to help members make meaningful progress through accountability, shared experience, and practical support.</p>
-  <p>Your input will directly help us determine how the groups are structured, what they focus on, and which members may benefit most from working together. Please answer based on what would genuinely help you make progress over the next 90 days.</p>
-  <p>This form takes about <strong>5 minutes</strong>.</p>
+  <p>We're exploring smaller, more focused peer groups to help members make meaningful progress — and we want to make sure they're designed around what members actually need, especially around marketing, sales, and client retention.</p>
+  <p>Your answers will help us understand where you are in your business, what kind of support would be most useful, and how a peer group could be structured to work for you. The more honest you are, the better we can design this.</p>
+  <p>This isn't just about group matching — it's also a chance for us to check in, understand where you need support, and hear feedback that helps us improve the overall experience.</p>
+  <p>It will only take five minutes, and completing it doesn't commit you to anything.</p>
   <div class="privacy-note">🔒 Your responses, including MRR information, will be used only to understand member needs and help design and match the groups. Individual financial information will not be shared with other members.</div>
 </div>
 
@@ -502,7 +528,7 @@
       <div class="error">Please select at least one.</div>
     </div>
 
-    <div class="field" id="f-worth">
+    <div class="field">
       <label>Imagine the group has been running for 90 days. What specific result would make you say, "This was worth my time"? <span class="opt-tag">(optional)</span></label>
       <div class="hint">Examples: schedule 10 qualified appointments, close three new clients, complete SBRs with 80% of clients, launch one consistent campaign, or establish better team accountability.</div>
       <textarea id="worth" placeholder="Describe what success looks like..."></textarea>
@@ -548,10 +574,10 @@
     </div>
   </div>
 
-  <!-- ─── Section 3: Group Fit & Availability ─── -->
+  <!-- ─── Section 3: Group Fit & Participation ─── -->
   <div class="section" id="s3">
-    <div class="section-heading">Group fit and availability</div>
-    <div class="section-sub">Help us understand who you would learn best with and how you could realistically participate.</div>
+    <div class="section-heading">Group fit and participation</div>
+    <div class="section-sub">Help us understand who you would learn best with, how you could realistically participate, and whether this type of group feels right for you.</div>
 
     <div class="field">
       <label>What type of members would you benefit most from being grouped with? <span class="opt-tag">(optional)</span></label>
@@ -611,6 +637,23 @@
       <div class="error">Please select your time zone.</div>
     </div>
 
+    <div class="field" id="f-interest">
+      <label>Based on what you know so far, how open would you be to participating in a small, implementation-focused peer group over the next 90 days? <span class="req">*</span></label>
+      <div class="sublabel">A small group would meet regularly to work toward specific goals, share progress and challenges, and help members follow through on their priorities.</div>
+      <div class="radio-pills" id="interest">
+        <button class="radio-pill" data-val="I'd like to be considered for a group">I'd like to be considered for a group</button>
+        <button class="radio-pill" data-val="I may be interested, depending on the focus, members, and schedule">I may be interested, depending on the focus, members, and schedule</button>
+        <button class="radio-pill" data-val="I'd like more information before deciding">I'd like more information before deciding</button>
+        <button class="radio-pill" data-val="I'm not interested at this time">I'm not interested at this time</button>
+      </div>
+      <div class="error">Please select one.</div>
+    </div>
+
+    <div class="field">
+      <label>What would make you more likely to participate, or what concerns would you want us to consider? <span class="opt-tag">(optional)</span></label>
+      <textarea id="concerns" placeholder="Share any concerns or what would make this more appealing..."></textarea>
+    </div>
+
     <div class="nav">
       <button class="btn btn-back" onclick="goBack(3)">← Back</button>
       <button class="btn btn-next" onclick="submitForm()">Submit</button>
@@ -624,19 +667,22 @@
         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
       </div>
       <h2>Thank you for sharing your input.</h2>
-      <p>Your responses will help us design peer groups around the goals, challenges, and types of support members actually need. We'll review responses to identify common priorities, preferred formats, scheduling needs, and potential group matches. We'll follow up soon with next steps.</p>
+      <p>Your responses will help us design peer groups around the goals, challenges, and types of support members actually need — not assumptions about what would be most helpful.</p>
+      <p>We'll review the responses to identify common priorities, preferred formats, scheduling needs, potential group matches, and any concerns that should be addressed before the groups are formed.</p>
+      <p>Completing this form does not commit you to participate. We'll share more information before any final group placement or decision is made.</p>
     </div>
   </div>
 </div>
 
 <script>
   var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw0sATOtlNijUcUGYQ_og2i37idEdQFKtF6G0MqTCGdzF3Xzmw_bZQMs0NEWy7OvuM1lg/exec';
+  var NOTIFY_EMAIL = 'YOUR_EMAIL_HERE'; // ✏️ Add your email for notifications
 
   var sectionMeta = [
     null,
     { label: 'Section 1 of 3 — About you', pct: 33 },
     { label: 'Section 2 of 3 — Your next 90 days', pct: 66 },
-    { label: 'Section 3 of 3 — Group fit and availability', pct: 100 },
+    { label: 'Section 3 of 3 — Group fit and participation', pct: 100 },
     { label: 'Complete', pct: 100 },
   ];
 
@@ -653,7 +699,6 @@
   function goBack(from) { showSection(from - 1); }
   function goNext(from) { if (validateSection(from)) showSection(from + 1); }
 
-  /* ── Validation ── */
   function validateSection(n) {
     var ok = true;
     if (n === 1) {
@@ -673,6 +718,7 @@
       ok = chkPills('freq', 'f-freq') & ok;
       ok = chkAvail('f-avail') & ok;
       ok = chkSelect('timezone', 'f-tz') & ok;
+      ok = chkRadio('interest', 'f-interest') & ok;
     }
     return !!ok;
   }
@@ -699,6 +745,13 @@
     f.classList.remove('has-error'); return true;
   }
 
+  function chkRadio(groupId, fid) {
+    var sel = document.querySelectorAll('#' + groupId + ' .radio-pill.selected');
+    var f = document.getElementById(fid);
+    if (!sel.length) { f.classList.add('has-error'); return false; }
+    f.classList.remove('has-error'); return true;
+  }
+
   function chkAvail(fid) {
     var sel = document.querySelectorAll('#avail .avail-pill.selected');
     var f = document.getElementById(fid);
@@ -713,7 +766,7 @@
     f.classList.remove('has-error'); return true;
   }
 
-  /* ── Pill interactions ── */
+  // Pill interactions
   document.querySelectorAll('.pills').forEach(function(group) {
     var max = parseInt(group.dataset.max) || 99;
     group.querySelectorAll('.pill').forEach(function(pill) {
@@ -737,6 +790,19 @@
     });
   });
 
+  // Radio pill interactions (single select, no deselect)
+  document.querySelectorAll('.radio-pills').forEach(function(group) {
+    group.querySelectorAll('.radio-pill').forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        group.querySelectorAll('.radio-pill').forEach(function(p) { p.classList.remove('selected'); });
+        pill.classList.add('selected');
+        var fid = 'f-' + group.id;
+        var field = document.getElementById(fid);
+        if (field) field.classList.remove('has-error');
+      });
+    });
+  });
+
   document.querySelectorAll('.avail-pill').forEach(function(pill) {
     pill.addEventListener('click', function() {
       pill.classList.toggle('selected');
@@ -744,14 +810,11 @@
     });
   });
 
-  // Timezone "Other" toggle
   document.getElementById('timezone').addEventListener('change', function() {
-    var otherEl = document.getElementById('tz-other');
-    otherEl.style.display = this.value === 'Other' ? 'block' : 'none';
+    document.getElementById('tz-other').style.display = this.value === 'Other' ? 'block' : 'none';
     document.getElementById('f-tz').classList.remove('has-error');
   });
 
-  /* ── Helpers ── */
   function getVal(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
 
   function getPills(groupId) {
@@ -759,13 +822,16 @@
     document.querySelectorAll('#' + groupId + ' .pill.selected').forEach(function(p) {
       var v = p.dataset.val || '';
       if (v.indexOf('other-') === 0) {
-        var otherId = groupId + '-other';
-        var otherEl = document.getElementById(otherId);
-        var txt = otherEl ? otherEl.value.trim() : '';
+        var txt = getVal(groupId + '-other');
         vals.push(txt ? 'Other: ' + txt : 'Other');
       } else if (v) { vals.push(v); }
     });
     return vals.join(', ') || '';
+  }
+
+  function getRadio(groupId) {
+    var sel = document.querySelector('#' + groupId + ' .radio-pill.selected');
+    return sel ? sel.dataset.val : '';
   }
 
   function getAvail() {
@@ -783,27 +849,28 @@
     return v;
   }
 
-  /* ── Submit ── */
   function submitForm() {
     if (!validateSection(3)) return;
 
     var payload = {
-      'Name':           getVal('name'),
-      'Email':          getVal('email'),
-      'Company':        getVal('company'),
-      'Market':         getVal('market'),
-      'MRR at Join':    getVal('mrr-start'),
-      'MRR Today':      getVal('mrr-now'),
-      '90-Day Goals':   getPills('goals'),
-      'Worth It If':    getVal('worth'),
+      'Name':             getVal('name'),
+      'Email':            getVal('email'),
+      'Company':          getVal('company'),
+      'Market':           getVal('market'),
+      'MRR at Join':      getVal('mrr-start'),
+      'MRR Today':        getVal('mrr-now'),
+      '90-Day Goals':     getPills('goals'),
+      'Worth It If':      getVal('worth'),
       'Wants From Group': getPills('wants'),
-      'Most Valuable':  getVal('valuable'),
-      'Meeting Style':  getPills('style'),
-      'Group With':     getPills('groupwith'),
-      'Who Participates': getPills('who'),
-      'Frequency':      getPills('freq'),
-      'Availability':   getAvail(),
-      'Time Zone':      getTZ(),
+      'Most Valuable':    getVal('valuable'),
+      'Meeting Style':    getPills('style'),
+      'Group With':       getPills('groupwith'),
+      'Who Participates': getRadio('who'),
+      'Frequency':        getRadio('freq'),
+      'Availability':     getAvail(),
+      'Time Zone':        getTZ(),
+      'Interest Level':   getRadio('interest'),
+      'Concerns':         getVal('concerns'),
     };
 
     showSection(4);
